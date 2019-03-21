@@ -1,8 +1,8 @@
 #include "number.h"
 
-vector< vector<char> > ReadFileStoreImage(std::string file_path, int index) {
+vector< vector<char> > ReadFileStoreImage(std::string file_name, int index) {
 	std::ifstream my_file;
-	my_file.open(file_path);
+	my_file.open(file_name);
 	vector<std::string> file_contents;
 
 	if (my_file.fail()) {
@@ -24,8 +24,8 @@ vector< vector<char> > ReadFileStoreImage(std::string file_path, int index) {
 	return CreateCharVector(file_contents);
 }
 
-vector< vector<char> > CreateCharVector(vector<std::string> lines_from_file) {
-	vector< vector<char> > to_return;
+vector < vector <char> > CreateCharVector(vector<std::string> lines_from_file) {
+	vector < vector <char> > to_return;
 	to_return.resize(kDimension);
 	for (int i = 0; i < lines_from_file.size(); i++) {
 		to_return[i].resize(kDimension);
@@ -36,7 +36,7 @@ vector< vector<char> > CreateCharVector(vector<std::string> lines_from_file) {
 	return to_return;
 }
 
-int PrintTwoDVector(vector< vector<char> > to_print) {
+int PrintTwoDVector(vector < vector <char> > to_print) {
 	for (int i = 0; i < to_print.size(); i++) {
 		for (int j = 0; j < to_print[i].size(); j++) {
 			cout << to_print[i][j] << " ";
@@ -44,6 +44,38 @@ int PrintTwoDVector(vector< vector<char> > to_print) {
 		cout << endl;
 	}
 	return 0;
+}
+
+vector <int> ReadContentsOfFile(std::string file_name) {
+	std::ifstream my_file;
+	my_file.open(file_name);
+	vector<int> file_contents;
+
+	if (my_file.fail()) {
+		std::cerr << "Error opening file";
+		exit(1);
+	}
+	if (my_file.is_open()) {
+		std::string line;
+		int counter = 0;
+		while (getline(my_file, line)) {
+			int num = atoi(line.c_str()); 
+			file_contents.push_back(num);
+		}
+	}
+	my_file.close();
+	return file_contents;
+}
+
+vector <int> GetIndexesForDigit(int digit, std::string file_name) {
+	vector <int> indexes;
+	vector <int> file_contents = ReadContentsOfFile(file_name);
+	for (int i = 0; i < file_contents.size(); i++) {
+		if (file_contents[i] == digit) {
+			indexes.push_back(i);
+		}
+	}
+	return indexes;
 }
 
 

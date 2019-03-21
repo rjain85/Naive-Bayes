@@ -26,16 +26,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="number.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\digitdata\trainingimages">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\..\digitdata\testimages">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\digitdata\traininglabels">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

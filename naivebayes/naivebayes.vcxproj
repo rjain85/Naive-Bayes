@@ -161,6 +161,7 @@
   <ItemGroup>
     <None Include="..\..\digitdata\testimages" />
     <None Include="..\..\digitdata\trainingimages" />
+    <None Include="..\..\digitdata\traininglabels" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
