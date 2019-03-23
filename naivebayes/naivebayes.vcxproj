@@ -154,6 +154,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="naivebayes.cpp" />
     <ClCompile Include="number.cpp" />
+    <ClCompile Include="training_model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="number.h" />

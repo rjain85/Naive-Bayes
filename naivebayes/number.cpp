@@ -24,7 +24,36 @@ vector< vector<char> > ReadFileStoreImage(std::string file_name, int index) {
 	return CreateCharVector(file_contents);
 }
 
-vector < vector <char> > CreateCharVector(vector<std::string> lines_from_file) {
+vector <vector< vector<char> > > ReadFileStoreImages(std::string file_name) {
+	vector <vector< vector<char> > > images;
+	vector<std::string> single_image;
+
+	std::ifstream my_file;
+	my_file.open(file_name);
+
+	int counter = 0;
+	if (my_file.fail()) {
+		std::cerr << "Error opening file";
+		exit(1);
+	}
+	if (my_file.is_open()) {
+		std::string line;
+		while (getline(my_file, line)) {
+			single_image.push_back(line);
+			counter++;
+			if (counter == kDimension) {
+				images.push_back(CreateCharVector(single_image));
+				counter = 0;
+				single_image.clear();
+			}
+		}
+	}
+	my_file.close();
+
+	return images;
+}
+
+vector < vector <char> > CreateCharVector(vector<std::string> &lines_from_file) {
 	vector < vector <char> > to_return;
 	to_return.resize(kDimension);
 	for (int i = 0; i < lines_from_file.size(); i++) {
@@ -46,7 +75,7 @@ int PrintTwoDVector(vector < vector <char> > to_print) {
 	return 0;
 }
 
-vector <int> ReadContentsOfFile(std::string file_name) {
+vector <int> ReadNumbersFromFile(std::string file_name) {
 	std::ifstream my_file;
 	my_file.open(file_name);
 	vector<int> file_contents;
@@ -69,7 +98,7 @@ vector <int> ReadContentsOfFile(std::string file_name) {
 
 vector <int> GetIndexesForDigit(int digit, std::string file_name) {
 	vector <int> indexes;
-	vector <int> file_contents = ReadContentsOfFile(file_name);
+	vector <int> file_contents = ReadNumbersFromFile(file_name);
 	for (int i = 0; i < file_contents.size(); i++) {
 		if (file_contents[i] == digit) {
 			indexes.push_back(i);
