@@ -164,6 +164,9 @@
     <None Include="..\..\digitdata\trainingimages" />
     <None Include="..\..\digitdata\traininglabels" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="independentclasspriors.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

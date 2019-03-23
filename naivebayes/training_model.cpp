@@ -49,16 +49,36 @@ vector <vector< vector<double> > > training_model::CreateComposites(vector <vect
 	return training_model;
 }
 
-vector <double> training_model::ComputeIndependentClassPriors(std::string file_name) {
+ vector <double> training_model::ComputeIndependentClassPriors(std::string file_name) {
 	vector <double> priors;
 	priors.resize(kDigits);
-	int total_training_images = ReadNumbersFromFile(file_name).size();
+	double total_training_images = ReadNumbersFromFile(file_name).size();
 	for (int i = 0; i < priors.size(); i++) {
-		int num_training_images_for_digit = GetIndexesForDigit(i, file_name).size();
+		double num_training_images_for_digit = GetIndexesForDigit(i, file_name).size();
 		priors[i] = (num_training_images_for_digit / total_training_images);
 	}
 	return priors;
 }
+
+int training_model::WriteIndependentClassPriorsToFile(std::string training_labels, std::string prior_file_name) {
+	
+	std::ofstream out_file;
+	out_file.open(prior_file_name);
+
+	vector <double> independent_class_priors = ComputeIndependentClassPriors(training_labels);
+
+	if (out_file.fail()) {
+		std::cerr << "Error opening file";
+		exit(1);
+	}
+	if (out_file.is_open()) {
+		for (double i : independent_class_priors) {
+			out_file << i << endl;
+		}
+	}
+	return 0;
+}
+
 
 
 
