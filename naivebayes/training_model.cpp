@@ -1,6 +1,6 @@
 #include "number.h"
 
-vector <vector< vector<double> > > training_model::CreateFeaturesModel(std::string images_file, std::string images_labels, bool is_feature_one) {
+vector <vector< vector<double> > > training_model::ComputeFeaturesModel(std::string images_file, std::string images_labels, bool is_feature_one) {
 	vector <vector< vector<char> > > training_images = ReadFileStoreImages("trainingimages");
 	vector <vector< vector<double> > > features;
 	features.resize(kDigits);
@@ -48,5 +48,17 @@ vector <vector< vector<double> > > training_model::CreateComposites(vector <vect
 	}
 	return training_model;
 }
+
+vector <double> training_model::ComputeIndependentClassPriors(std::string file_name) {
+	vector <double> priors;
+	priors.resize(kDigits);
+	int total_training_images = ReadNumbersFromFile(file_name).size();
+	for (int i = 0; i < priors.size(); i++) {
+		int num_training_images_for_digit = GetIndexesForDigit(i, file_name).size();
+		priors[i] = (num_training_images_for_digit / total_training_images);
+	}
+	return priors;
+}
+
 
 

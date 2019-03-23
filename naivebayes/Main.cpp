@@ -4,7 +4,7 @@ int main(int argc, char *argv[]) {
 	vector <int> indexes = GetIndexesForDigit(5, "traininglabels");
 	
 	training_model model;
-	vector <vector< vector<double> > > features = model.CreateFeaturesModel("trainingimages", "traininglabels", true);
+	vector <vector< vector<double> > > features = model.ComputeFeaturesModel("trainingimages", "traininglabels", true);
 	/*for (vector< vector<double> > d : features) {
 		for (int i = 0; i < d.size(); i++) {
 			for (int j = 0; j < d.size(); j++) {
@@ -25,5 +25,11 @@ int main(int argc, char *argv[]) {
 		}
 		cout << endl;
 	}
+
+	vector<double> priors = model.ComputeIndependentClassPriors("traininglabels");
+	for (int i = 0; i < priors.size(); i++) {
+		cout << i << ": " << priors[i] << endl;
+	}
+
 
 }

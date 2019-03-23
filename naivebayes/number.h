@@ -31,6 +31,7 @@ public:
 	const char kGray = '+';
 	const char kBlack = '#';
 	const int kDigits = 10;
-	vector <vector< vector<double> > > CreateFeaturesModel(std::string images_file, std::string images_label, bool is_feature_one);
+	vector <vector< vector<double> > > ComputeFeaturesModel(std::string images_file, std::string images_label, bool is_feature_one);
 	vector <vector< vector<double> > > CreateComposites(vector <vector< vector<double> > > training_model);
+	vector <double> ComputeIndependentClassPriors(std::string file_name);
 };
