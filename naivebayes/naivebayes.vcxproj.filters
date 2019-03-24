@@ -27,6 +27,9 @@
     <ClCompile Include="training_model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="classifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\digitdata\trainingimages">

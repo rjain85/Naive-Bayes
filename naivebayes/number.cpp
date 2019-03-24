@@ -142,4 +142,9 @@ vector <int> GetIndexesForDigit(int digit, std::string file_name) {
 	return indexes;
 }
 
+double ReturnMaxFromVector(vector<double> numbers) {
+	sort(numbers.begin(), numbers.end());
+	return maximumValue = numbers[numbers.size() - 1];
+}
+
 
