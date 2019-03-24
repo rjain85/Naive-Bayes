@@ -52,7 +52,7 @@ vector <vector< vector<double> > > training_model::CreateComposites(vector <vect
  vector <double> training_model::ComputeIndependentClassPriors(std::string file_name) {
 	vector <double> priors;
 	priors.resize(kDigits);
-	double total_training_images = ReadNumbersFromFile(file_name).size();
+	double total_training_images = ReadIntsFromFile(file_name).size();
 	for (int i = 0; i < priors.size(); i++) {
 		double num_training_images_for_digit = GetIndexesForDigit(i, file_name).size();
 		priors[i] = (num_training_images_for_digit / total_training_images);

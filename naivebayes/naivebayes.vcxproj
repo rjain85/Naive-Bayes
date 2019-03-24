@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\digitdata\testimages" />
+    <None Include="..\..\digitdata\testlabels" />
     <None Include="..\..\digitdata\trainingimages" />
     <None Include="..\..\digitdata\traininglabels" />
   </ItemGroup>

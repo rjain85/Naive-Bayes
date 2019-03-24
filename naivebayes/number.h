@@ -27,7 +27,9 @@ const char kGray = '+';
 
 const char kBlack = '#';
 
-vector<int> ReadNumbersFromFile(std::string file_name);
+vector<int> ReadIntsFromFile(std::string file_name);
+
+vector<double> ReadDoublesFromFile(std::string file_name);
 
 vector<int> GetIndexesForDigit(int digit, std::string file_name);
 
@@ -35,7 +37,7 @@ vector <vector< vector<char> > > ReadFileStoreImages(std::string file_name);
 
 vector <vector< vector<double> > > ReadProbabilitiesFromFile(std::string file_name);
 
-double ReturnMaxFromVector(vector<double>);
+int ReturnIndexOfMaxValue(vector<double> numbers);
 
 
 class training_model {
@@ -52,5 +54,6 @@ public:
 class classifier {
 public:
 	vector <int> ClassifyImages(std::string images_to_classify, vector <vector< vector<double> > > black_feature_probabilities, vector <vector< vector<double> > > white_feature_probabilities, vector <double> independent_class_priors);
-
+	double ReportClassificationAccuracy(vector<int> classifications, std::string test_labels);
+	vector< vector<double> > ComputeConfusionMatrix(vector<int> classifications, std::string test_labels);
 };

@@ -18,6 +18,7 @@ vector<int> classifier::ClassifyImages(std::string images_to_classify, vector<ve
 				for (int k = 0; k < to_classify[i][j].size(); k++) {
 					if (to_classify[i][j][k] == kWhite) {
 						posterior_probabilities[digit] += log10(white_feature_probabilities[digit][j][k]);
+
 					}
 					if (to_classify[i][j][k] == kGray || to_classify[i][j][k] == kBlack) {
 						posterior_probabilities[digit] += log10(black_feature_probabilities[digit][j][k]);
@@ -25,7 +26,25 @@ vector<int> classifier::ClassifyImages(std::string images_to_classify, vector<ve
 				}
 			}
 		}
-		
+		classifications[i] = ReturnIndexOfMaxValue(posterior_probabilities);
 	}
-	return vector<int>();
+	return classifications;
 }
+
+double classifier::ReportClassificationAccuracy(vector<int> classifications, std::string test_labels) {
+	vector<int> answers = ReadIntsFromFile(test_labels);
+	double accuracy = 0;
+	for (int i = 0; i < classifications.size(); i++) {
+		if (classifications[i] == answers[i]) {
+			accuracy++;
+		}
+	}
+	return accuracy/classifications.size();
+}
+
+vector<vector<double>> classifier::ComputeConfusionMatrix(vector<int> classifications, std::string test_labels)
+{
+	return vector<vector<double>>();
+}
+
+

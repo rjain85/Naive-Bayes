@@ -4,6 +4,7 @@ int main(int argc, char *argv[]) {
 	vector <int> indexes = GetIndexesForDigit(5, "traininglabels");
 	
 	training_model model;
+	classifier classy;
 	//vector <vector< vector<double> > > black_features = model.ComputeFeaturesModel("trainingimages", "traininglabels", true);
 	//vector <vector< vector<double> > > white_features = model.ComputeFeaturesModel("trainingimages", "traininglabels", false);
 
@@ -36,5 +37,12 @@ int main(int argc, char *argv[]) {
 	/*model.WriteIndependentClassPriorsToFile("traininglabels", "independentclasspriors.txt");
 	model.WriteFeaturesProbabilitiesToFile(black_features, "blackfeaturesprobabilities.txt");
 	model.WriteFeaturesProbabilitiesToFile(white_features, "whitefeaturesprobabilities.txt");*/
+
+	vector<vector<vector<double>>> black = ReadProbabilitiesFromFile("blackfeaturesprobabilities.txt");
+	vector<vector<vector<double>>> white = ReadProbabilitiesFromFile("whitefeaturesprobabilities.txt");
+	vector <double> priors = ReadDoublesFromFile("independentclasspriors.txt");
+	vector<int> classifications = classy.ClassifyImages("testimages", black, white, priors);
+	double accuracy = classy.ReportClassificationAccuracy(classifications, "testlabels");
+	cout << accuracy;
 
 }

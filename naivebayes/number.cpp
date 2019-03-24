@@ -76,9 +76,9 @@ vector<vector<vector<double>>> ReadProbabilitiesFromFile(std::string file_name) 
 	int index = 0;
 	for (int i = 0; i < features.size(); i++) {
 		features[i].resize(kDimension);
-		for (int j = 0; j < features.size(); j++) {
+		for (int j = 0; j < features[i].size(); j++) {
 			features[i][j].resize(kDimension);
-			for (int k = 0; k < features.size(); k++) {
+			for (int k = 0; k < features[i][j].size(); k++) {
 				double to_add = atof(file_contents[index].c_str());
 				features[i][j][k] = to_add;
 				index++;
@@ -110,7 +110,7 @@ int PrintTwoDVector(vector < vector <char> > to_print) {
 	return 0;
 }
 
-vector <int> ReadNumbersFromFile(std::string file_name) {
+vector<int> ReadIntsFromFile(std::string file_name) {
 	std::ifstream my_file;
 	my_file.open(file_name);
 	vector<int> file_contents;
@@ -131,9 +131,30 @@ vector <int> ReadNumbersFromFile(std::string file_name) {
 	return file_contents;
 }
 
-vector <int> GetIndexesForDigit(int digit, std::string file_name) {
-	vector <int> indexes;
-	vector <int> file_contents = ReadNumbersFromFile(file_name);
+vector<double> ReadDoublesFromFile(std::string file_name) {
+	std::ifstream my_file;
+	my_file.open(file_name);
+	vector<double> file_contents;
+
+	if (my_file.fail()) {
+		std::cerr << "Error opening file";
+		exit(1);
+	}
+	if (my_file.is_open()) {
+		std::string line;
+		int counter = 0;
+		while (getline(my_file, line)) {
+			double num = atof(line.c_str());
+			file_contents.push_back(num);
+		}
+	}
+	my_file.close();
+	return file_contents;
+}
+
+vector<int> GetIndexesForDigit(int digit, std::string file_name) {
+	vector<int> indexes;
+	vector<int> file_contents = ReadIntsFromFile(file_name);
 	for (int i = 0; i < file_contents.size(); i++) {
 		if (file_contents[i] == digit) {
 			indexes.push_back(i);
@@ -142,9 +163,17 @@ vector <int> GetIndexesForDigit(int digit, std::string file_name) {
 	return indexes;
 }
 
-double ReturnMaxFromVector(vector<double> numbers) {
-	sort(numbers.begin(), numbers.end());
-	return maximumValue = numbers[numbers.size() - 1];
+int ReturnIndexOfMaxValue(vector<double> numbers) {
+	double maximum = numbers[0];
+	int index = 0;
+
+	for (int i = 0; i < numbers.size(); i++) {
+		if (numbers[i] > maximum) {
+			maximum = numbers[i];
+			index = i;
+		}
+	}
+	return index;
 }
 
 

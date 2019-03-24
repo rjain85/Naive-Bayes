@@ -41,6 +41,9 @@
     <None Include="..\..\digitdata\traininglabels">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\digitdata\testlabels">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="number.h">
