@@ -34,5 +34,6 @@ public:
 	vector <vector< vector<double> > > ComputeFeaturesModel(std::string images_file, std::string images_label, bool is_feature_one);
 	vector <vector< vector<double> > > CreateComposites(vector <vector< vector<double> > > training_model);
 	vector <double> ComputeIndependentClassPriors(std::string file_name);
-	int WriteIndependentClassPriorsToFile(std::string training_labels, std::string prior_file_name);
+	int WriteIndependentClassPriorsToFile(std::string training_labels, std::string file_name);
+	int WriteFeaturesProbabilitiesToFile(vector <vector< vector<double> > > training_model, std::string file_name);
 };

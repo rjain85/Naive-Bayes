@@ -60,10 +60,10 @@ vector <vector< vector<double> > > training_model::CreateComposites(vector <vect
 	return priors;
 }
 
-int training_model::WriteIndependentClassPriorsToFile(std::string training_labels, std::string prior_file_name) {
+int training_model::WriteIndependentClassPriorsToFile(std::string training_labels, std::string file_name) {
 	
 	std::ofstream out_file;
-	out_file.open(prior_file_name);
+	out_file.open(file_name);
 
 	vector <double> independent_class_priors = ComputeIndependentClassPriors(training_labels);
 
@@ -76,6 +76,27 @@ int training_model::WriteIndependentClassPriorsToFile(std::string training_label
 			out_file << i << endl;
 		}
 	}
+	return 0;
+}
+
+int training_model::WriteFeaturesProbabilitiesToFile(vector <vector< vector<double> > > training_model, std::string file_name) {
+	std::ofstream out_file;
+	out_file.open(file_name);
+
+	if (out_file.fail()) {
+		std::cerr << "Error opening file";
+		exit(1);
+	}
+	if (out_file.is_open()) {
+		for (int i = 0; i < training_model.size(); i++) {
+			for (int j = 0; j < training_model[i].size(); j++) {
+				for (int k = 0; k < training_model[i][j].size(); k++) {
+					out_file << training_model[i][j][k] << endl;
+				}
+			}
+		}
+	}
+
 	return 0;
 }
 
