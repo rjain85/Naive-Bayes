@@ -165,7 +165,9 @@
     <None Include="..\..\digitdata\traininglabels" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="blackfeaturesprobabilities.txt" />
     <Text Include="independentclasspriors.txt" />
+    <Text Include="whitefeaturesprobabilities.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

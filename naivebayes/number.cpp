@@ -53,6 +53,41 @@ vector <vector< vector<char> > > ReadFileStoreImages(std::string file_name) {
 	return images;
 }
 
+vector<vector<vector<double>>> ReadProbabilitiesFromFile(std::string file_name) { //rename this method, this name sucks
+	vector<vector<vector<double>>> features;
+	features.resize(kDigits);
+
+	vector<std::string> file_contents;
+	std::ifstream my_file;
+	my_file.open(file_name);
+
+	if (my_file.fail()) {
+		std::cerr << "Error opening file";
+		exit(1);
+	}
+	if (my_file.is_open()) {
+		std::string line;
+		while (getline(my_file, line)) {
+			file_contents.push_back(line);
+		}
+	}
+	my_file.close();
+
+	int index = 0;
+	for (int i = 0; i < features.size(); i++) {
+		features[i].resize(kDimension);
+		for (int j = 0; j < features.size(); j++) {
+			features[i][j].resize(kDimension);
+			for (int k = 0; k < features.size(); k++) {
+				double to_add = atof(file_contents[index].c_str());
+				features[i][j][k] = to_add;
+				index++;
+			}
+		}
+	}
+	return features;
+}
+
 vector < vector <char> > CreateCharVector(vector<std::string> &lines_from_file) {
 	vector < vector <char> > to_return;
 	to_return.resize(kDimension);

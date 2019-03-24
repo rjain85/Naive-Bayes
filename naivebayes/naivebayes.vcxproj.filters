@@ -48,5 +48,11 @@
     <Text Include="independentclasspriors.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="blackfeaturesprobabilities.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="whitefeaturesprobabilities.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
