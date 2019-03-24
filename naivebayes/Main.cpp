@@ -43,6 +43,13 @@ int main(int argc, char *argv[]) {
 	vector <double> priors = ReadDoublesFromFile("independentclasspriors.txt");
 	vector<int> classifications = classy.ClassifyImages("testimages", black, white, priors);
 	double accuracy = classy.ReportClassificationAccuracy(classifications, "testlabels");
-	cout << accuracy;
-
+	cout << accuracy << endl;
+	vector <vector <double> > confusion_matrix = classy.ComputeConfusionMatrix(classifications, "testlabels");
+	
+	for (int i = 0; i < confusion_matrix.size(); i++) {
+		for (int j = 0; j < confusion_matrix[i].size(); j++) {
+			cout << confusion_matrix[i][j] << " ";
+		}
+		cout << endl;
+	}
 }

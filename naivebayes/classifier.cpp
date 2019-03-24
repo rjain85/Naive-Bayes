@@ -42,9 +42,22 @@ double classifier::ReportClassificationAccuracy(vector<int> classifications, std
 	return accuracy/classifications.size();
 }
 
-vector<vector<double>> classifier::ComputeConfusionMatrix(vector<int> classifications, std::string test_labels)
-{
-	return vector<vector<double>>();
+vector<vector<double>> classifier::ComputeConfusionMatrix(vector<int> classifications, std::string test_labels) {
+	vector<vector<double>> confusion_matrix;
+	confusion_matrix.resize(kDigits);
+
+	for (int column = 0; column < kDigits; column++) {
+		confusion_matrix[column].resize(kDigits);
+		vector <int> indexes = GetIndexesForDigit(column, test_labels);
+		double num_of_digits = indexes.size();
+		vector <int> classifications_of_digit = FindValuesAtIndexes(indexes, classifications);
+		for (int row = 0; row < kDigits; row++) {
+			double instances_of_digit = CountInstancesOfDigit(row, classifications_of_digit);
+			confusion_matrix[column][row] = instances_of_digit/num_of_digits;
+		}
+	}
+	return confusion_matrix;
 }
+
 
 

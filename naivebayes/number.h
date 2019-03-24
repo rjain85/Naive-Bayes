@@ -37,6 +37,10 @@ vector <vector< vector<char> > > ReadFileStoreImages(std::string file_name);
 
 vector <vector< vector<double> > > ReadProbabilitiesFromFile(std::string file_name);
 
+vector <int> FindValuesAtIndexes(vector <int> indexes, vector<int> values);
+
+int CountInstancesOfDigit(int digit, vector<int> numbers);
+
 int ReturnIndexOfMaxValue(vector<double> numbers);
 
 
@@ -56,4 +60,7 @@ public:
 	vector <int> ClassifyImages(std::string images_to_classify, vector <vector< vector<double> > > black_feature_probabilities, vector <vector< vector<double> > > white_feature_probabilities, vector <double> independent_class_priors);
 	double ReportClassificationAccuracy(vector<int> classifications, std::string test_labels);
 	vector< vector<double> > ComputeConfusionMatrix(vector<int> classifications, std::string test_labels);
+
+
+
 };

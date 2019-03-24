@@ -176,4 +176,24 @@ int ReturnIndexOfMaxValue(vector<double> numbers) {
 	return index;
 }
 
+vector <int> FindValuesAtIndexes(vector <int> indexes, vector<int> values) {
+	vector <int> values_at_indexes;
+
+	for (int index : indexes) {
+		values_at_indexes.push_back(values[index]);
+	}
+	return values_at_indexes;
+}
+
+int CountInstancesOfDigit(int digit, vector<int> numbers) {
+	int counter = 0;
+	for (int number : numbers) {
+		if (number == digit) {
+			counter++;
+		}
+	}
+	return counter;
+}
+
+
 
