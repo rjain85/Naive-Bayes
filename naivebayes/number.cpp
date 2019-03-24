@@ -100,7 +100,7 @@ vector < vector <char> > CreateCharVector(vector<std::string> &lines_from_file) 
 	return to_return;
 }
 
-int PrintTwoDVector(vector < vector <char> > to_print) {
+int PrintTwoDVector(vector < vector <double> > to_print) {
 	for (int i = 0; i < to_print.size(); i++) {
 		for (int j = 0; j < to_print[i].size(); j++) {
 			cout << to_print[i][j] << " ";

@@ -15,7 +15,7 @@ vector< vector<char> > ReadFileStoreImage(std::string file_name, int index);
 
 vector< vector<char> > CreateCharVector(vector<std::string> &lines_from_file);
 
-int PrintTwoDVector(vector< vector<char> > to_print);
+int PrintTwoDVector(vector< vector<double> > to_print);
 
 const int kDimension = 28;
 

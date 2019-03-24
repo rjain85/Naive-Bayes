@@ -39,7 +39,8 @@ double classifier::ReportClassificationAccuracy(vector<int> classifications, std
 			accuracy++;
 		}
 	}
-	return accuracy/classifications.size();
+	return accuracy/classifications.size() * 100;
+
 }
 
 vector<vector<double>> classifier::ComputeConfusionMatrix(vector<int> classifications, std::string test_labels) {
