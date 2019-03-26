@@ -39,8 +39,9 @@ double classifier::ReportClassificationAccuracy(vector<int> classifications, std
 			accuracy++;
 		}
 	}
-	return accuracy/classifications.size() * 100;
-
+	accuracy = accuracy / classifications.size() * 100;
+	cout << "Accuracy: " << accuracy << "%" << endl;
+	return accuracy;
 }
 
 vector<vector<double>> classifier::ComputeConfusionMatrix(vector<int> classifications, std::string test_labels) {
@@ -59,6 +60,17 @@ vector<vector<double>> classifier::ComputeConfusionMatrix(vector<int> classifica
 	}
 	return confusion_matrix;
 }
+
+int classifier::PrintConfusionMatrix(vector<vector<double>> to_print) {
+	for (int i = 0; i < to_print.size(); i++) {
+		for (int j = 0; j < to_print[i].size(); j++) {
+			printf("%2f  ", to_print[i][j]);
+		}
+		cout << endl;
+	}
+	return 0;
+}
+
 
 
 

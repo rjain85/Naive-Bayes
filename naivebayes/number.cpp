@@ -100,10 +100,14 @@ vector < vector <char> > CreateCharVector(vector<std::string> &lines_from_file) 
 	return to_return;
 }
 
-int PrintTwoDVector(vector < vector <double> > to_print) {
+int PrintThreeDVector(vector <vector< vector<double> > > to_print) {
+	
 	for (int i = 0; i < to_print.size(); i++) {
 		for (int j = 0; j < to_print[i].size(); j++) {
-			cout << to_print[i][j] << " ";
+			for (int k = 0; k < to_print[i][j].size(); k++) {
+				cout << to_print[i][j][k];
+			}
+			cout << endl;
 		}
 		cout << endl;
 	}
@@ -194,6 +198,3 @@ int CountInstancesOfDigit(int digit, vector<int> numbers) {
 	}
 	return counter;
 }
-
-
-

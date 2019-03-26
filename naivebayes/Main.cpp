@@ -14,20 +14,11 @@ int main(int argc, char *argv[]) {
 			cout << endl;
 		}
 		cout << endl;
-	}
+	}*/
 
-	vector <vector< vector<double> > > composite_images = model.CreateComposites(features);
-	for (vector< vector<double> > image : composite_images) {
-		for (int i = 0; i < image.size(); i++) {
-			for (int j = 0; j < image.size(); j++) {
-				cout << image[i][j];
-			}
-			cout << endl;
-		}
-		cout << endl;
-	}
+	
 
-	vector<double> priors = model.ComputeIndependentClassPriors("traininglabels");
+	/*vector<double> priors = model.ComputeIndependentClassPriors("traininglabels");
 	for (int i = 0; i < priors.size(); i++) {
 		cout << i << ": " << priors[i] << endl;
 	}*/
@@ -36,12 +27,13 @@ int main(int argc, char *argv[]) {
 	model.WriteFeaturesProbabilitiesToFile(black_features, "blackfeaturesprobabilities.txt");
 	model.WriteFeaturesProbabilitiesToFile(white_features, "whitefeaturesprobabilities.txt");*/
 
-	vector<vector<vector<double>>> black = ReadProbabilitiesFromFile("blackfeaturesprobabilities.txt");
+	vector <vector< vector<double> > > black = ReadProbabilitiesFromFile("blackfeaturesprobabilities.txt");
+	vector <vector< vector<double> > > composite_images = model.CreateComposites(black);
+	PrintThreeDVector(composite_images);
 	vector<vector<vector<double>>> white = ReadProbabilitiesFromFile("whitefeaturesprobabilities.txt");
 	vector <double> priors = ReadDoublesFromFile("independentclasspriors.txt");
 	vector<int> classifications = classy.ClassifyImages("testimages", black, white, priors);
-	double accuracy = classy.ReportClassificationAccuracy(classifications, "testlabels");
-	cout << "Accuracy: " << accuracy << "%" << endl;
+	classy.ReportClassificationAccuracy(classifications, "testlabels");
 	vector <vector <double> > confusion_matrix = classy.ComputeConfusionMatrix(classifications, "testlabels");
-	PrintTwoDVector(confusion_matrix);
+	classy.PrintConfusionMatrix(confusion_matrix);
 }

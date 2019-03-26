@@ -15,7 +15,7 @@ vector< vector<char> > ReadFileStoreImage(std::string file_name, int index);
 
 vector< vector<char> > CreateCharVector(vector<std::string> &lines_from_file);
 
-int PrintTwoDVector(vector< vector<double> > to_print);
+int PrintThreeDVector(vector <vector< vector<double> > > to_print);
 
 const int kDimension = 28;
 
@@ -47,7 +47,6 @@ int ReturnIndexOfMaxValue(vector<double> numbers);
 class training_model {
 public:
 	const int kLaplaceVal = .1;
-	
 	vector <vector< vector<double> > > ComputeFeaturesModel(std::string images_file, std::string images_label, bool is_feature_one);
 	vector <vector< vector<double> > > CreateComposites(vector <vector< vector<double> > > training_model);
 	vector <double> ComputeIndependentClassPriors(std::string file_name);
@@ -60,7 +59,5 @@ public:
 	vector <int> ClassifyImages(std::string images_to_classify, vector <vector< vector<double> > > black_feature_probabilities, vector <vector< vector<double> > > white_feature_probabilities, vector <double> independent_class_priors);
 	double ReportClassificationAccuracy(vector<int> classifications, std::string test_labels);
 	vector< vector<double> > ComputeConfusionMatrix(vector<int> classifications, std::string test_labels);
-
-
-
+	int PrintConfusionMatrix(vector < vector <double> > to_print);
 };
