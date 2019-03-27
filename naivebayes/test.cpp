@@ -3,8 +3,6 @@
 #include "catch.hpp"
 #include "naive_bayes.h"
 
-using std::string;
-
 TEST_CASE("Check if image vector is being populated by checking vector size and one pixel") {
 	vector <vector< vector<char> > > test_vector = ReadFileStoreImages("trainingimages");
 	REQUIRE((test_vector.size() == 5000));
