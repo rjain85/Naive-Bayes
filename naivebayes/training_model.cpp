@@ -1,4 +1,4 @@
-#include "number.h"
+#include "naive_bayes.h"
 
 // compute a training model for either black(1) or white(0) feature
 vector <vector< vector<double> > > training_model::ComputeFeaturesModel(std::string images_file, std::string images_labels, bool is_feature_one) {

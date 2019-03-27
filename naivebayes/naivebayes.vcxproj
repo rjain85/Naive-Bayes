@@ -154,14 +154,13 @@
     <ClCompile Include="classifier.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="naivebayes.cpp" />
-    <ClCompile Include="number.cpp" />
+    <ClCompile Include="handle_info.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="training_model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="catch.hpp" />
-    <ClInclude Include="number.h" />
-    <ClInclude Include="test.h" />
+    <ClInclude Include="naive_bayes.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\digitdata\testimages" />

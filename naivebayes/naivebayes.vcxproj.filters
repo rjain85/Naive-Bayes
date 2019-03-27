@@ -21,9 +21,6 @@
     <ClCompile Include="naivebayes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="number.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -35,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="handle_info.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,13 +52,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="number.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="catch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test.h">
+    <ClInclude Include="naive_bayes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

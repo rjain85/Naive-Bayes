@@ -1,4 +1,4 @@
-#include "number.h"
+#include "naive_bayes.h"
 
 // Take a vector of images and identify which digit each one represents
 vector<int> classifier::ClassifyImages(std::string images_to_classify, vector<vector<vector<double>>> black_feature_probabilities, vector<vector<vector<double>>> white_feature_probabilities, vector<double> independent_class_priors) {

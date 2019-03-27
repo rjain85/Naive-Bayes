@@ -1,4 +1,4 @@
-#include "number.h"
+#include "naive_bayes.h"
 
 // opens a file and stores all the images in a 3d char vector
 vector <vector< vector<char> > > ReadFileStoreImages(std::string file_name) {
@@ -166,7 +166,6 @@ int ReturnIndexOfMaxValue(vector<double> numbers) {
 // takes a vector of indexes and vector of values, returns the integers in the vector of values at the specified indexes
 vector <int> FindValuesAtIndexes(vector <int> indexes, vector<int> values) {
 	vector <int> values_at_indexes;
-
 	for (int index : indexes) {
 		values_at_indexes.push_back(values[index]);
 	}
