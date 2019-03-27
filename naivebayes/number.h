@@ -11,8 +11,6 @@ using std::endl;
 using std::string;
 using std::vector;
 
-vector< vector<char> > ReadFileStoreImage(std::string file_name, int index);
-
 vector< vector<char> > CreateCharVector(vector<std::string> &lines_from_file);
 
 int PrintThreeDVector(vector <vector< vector<double> > > to_print);
@@ -42,6 +40,8 @@ vector <int> FindValuesAtIndexes(vector <int> indexes, vector<int> values);
 int CountInstancesOfDigit(int digit, vector<int> numbers);
 
 int ReturnIndexOfMaxValue(vector<double> numbers);
+
+int HandleUserInput(int argc, char *argv[]);
 
 
 class training_model {
